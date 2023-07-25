@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mooddate: 2023-06-25
+  moodrating: 1
+  moodjournal: MyText
+  moodword: MyString
+
+two:
+  mooddate: 2023-06-25
+  moodrating: 1
+  moodjournal: MyText
+  moodword: MyString

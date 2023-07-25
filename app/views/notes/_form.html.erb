@@ -1,0 +1,11 @@
+<%= form_for [@day, note] do |f| %>
+
+  <div class="field">
+    <%= f.label :content, "Note" %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "button btn-primary"%>
+  </div>
+<% end %>

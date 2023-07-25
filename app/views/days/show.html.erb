@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<div class= "daydetails2">
+  <%= render @day %>
+</div>
+
+<div class= "leftshift1">
+  <button type='button' onclick="location.href='<%= edit_day_path(@day) %>';">Edit</button> 
+  <%= button_to "Delete", @day, method: :delete, data: { turbo_confirm: "Are you sure?"} %>
+</div>
+
+<div id="notes">
+  <h2>Notes</h2>
+
+  <% @day.notes.each do |note| %>
+    <div class= "notedetails">
+      <strong><%= note.created_at.to_date %></strong>
+      <div class= "block"> <%= note.content %> </div>
+      <div class= "notesbuttons">
+       <%= link_to "Edit", edit_day_note_path(@day, note) %>
+      <%= button_to "Delete", [@day, note], method: :delete, data: { turbo_confirm: "Are you sure?"} %>
+      </div>
+    </div>
+  <% end %>
+
+  <h2>Add a note</h2>
+
+  <div class="leftshift1"><%= render partial: "notes/form", locals: {note: @day.notes.new} %></div>
+
+</div>
+
+<div class= backbutton><%= link_to "Back to days", days_path %></div>

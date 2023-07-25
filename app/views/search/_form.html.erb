@@ -1,0 +1,4 @@
+<%= search_form_for(@q, url: search_path, method: :get) do |form| %>
+    <%= form.search_field :moodword_or_moodjournal_cont_all, placeholder: "Search..." %>
+    <%= form.submit "Search!" %>
+<% end %>    

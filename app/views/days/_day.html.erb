@@ -1,0 +1,22 @@
+<div id="<%= dom_id day %>" class = "day">
+  <p>
+    <div class="daydate"><strong>Date</strong></div>
+    <div class="daydate"><%= day.mooddate %></div>
+  </p>
+
+  <p>
+    <div class="dayl"><strong>Rating from -5 - 5</strong></div>
+    <div class="dayl"><%= day.moodrating %></div>
+  </p>
+
+  <p>
+    <div class="dayl"><strong>Description</strong></div>
+    <div class="dayl"><%= day.moodjournal %></div>
+  </p>
+
+  <p>
+    <div class="dayl"><strong>One Word Description</strong></div>
+   <div class="dayl"> <%= day.moodword %></div>
+  </p>
+
+</div>

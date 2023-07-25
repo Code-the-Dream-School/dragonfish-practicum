@@ -1,0 +1,51 @@
+<%= form_with(model: day) do |form| %>
+  <% if day.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(day.errors.count, "error") %> prohibited this day from being saved:</h2>
+
+      <ul>
+        <% day.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form">
+    <%= form.label :mooddate, "Date: "%>
+  </div>
+
+  <div class="form">
+    <%= form.date_field :mooddate %>
+  </div>
+  <div class="form">
+    <%= form.label :moodrating, "Rating from -5 - 5: "%>
+  </div>
+  
+  <div class="form">
+      <% -5.upto(5) do |i| %>
+      <%= form.radio_button(:moodrating, i) %>
+      <%= form.label :moodrating,  :value => i%>
+      <% end %>
+  </div>
+
+  <div class="form">
+    <%= form.label :moodjournal, "Describe your day: "%>
+  </div>
+
+  <div class="form">
+    <%= form.text_area :moodjournal %>
+  </div>
+
+  <div class="form">
+    <%= form.label :moodword, "Describe your day in one word: "%>
+  </div>
+
+  <div class="form">
+    <%= form.text_field :moodword %>
+  </div>
+  
+  <div class="form">
+    <%= form.submit class: "button btn-primary" %>
+  </div>
+
+<% end %>
