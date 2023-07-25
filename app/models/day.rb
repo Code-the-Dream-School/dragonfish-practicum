@@ -9,5 +9,9 @@ class Day < ApplicationRecord
     end
     def self.ransackable_associations(auth_object = nil)
         []
-      end
+    end
+
+    ransacker :moodrating do
+        Arel.sql("CHAR(#{table_name}.moodrating, CHAR(8))")
+    end
 end

@@ -32,24 +32,24 @@
 <%= pie_chart data, colors: colors %>
 </div>
 
-<h2>All daily mood entries</h2>
-
 
 <div class="leftshift1"><%= render 'search/form'%></div>
 
+<!--
 <div id="days" >
-  <% @days.reverse_each do |day| %>
+  <%# @days.reverse_each do |day| %>
   <div class="daydetails">
-    <%= render day %>
+    <%=# render day %>
     <p class= "showlink">
-      <%= link_to "Show", day %>
+      <%=# link_to "Show", day %>
     </p>
     <p class= "divider">
 <<>><<>><<>><<>>
     </p>
     </div>
-  <% end %>
+  <%# end %>
 </div>
+-->
 
     <footer id="footer"></footer>
 
