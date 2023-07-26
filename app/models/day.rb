@@ -11,7 +11,4 @@ class Day < ApplicationRecord
         []
     end
 
-    ransacker :moodrating do
-        Arel.sql("CHAR(#{table_name}.moodrating, CHAR(8))")
-    end
 end
