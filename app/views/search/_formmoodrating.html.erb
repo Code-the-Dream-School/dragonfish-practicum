@@ -1,6 +1,6 @@
 <%= search_form_for(@q, url: days_path, method: :get) do |form| %>
-    <%= form.search_field :moodword_or_moodrating_or_mooddate_or_moodjournal_eq, placeholder: "Search..." %>
-    <%= form.submit "Search!" %>
+    <%= form.search_field :moodrating_eq, placeholder: "Search..." %>
+    <%= form.submit "Search Ratings!" %>
 <% end %>    
 
 
@@ -23,8 +23,6 @@
         <thead>
             <tr>
             <th><%= sort_link(@q, :mooddate, "Date", default_order: :mooddate) %></th>
-            <th><%= sort_link(@q, :moodword, "Word") %></th>
-            <th><%= sort_link(@q, :moodjournal, "Description") %></th>
             <th><%= sort_link(@q, :moodrating, "Rating") %></th>
             </tr>
         </thead>  
@@ -32,8 +30,6 @@
         <% @moodresults.each do |d| %>
         <tr>
             <td><%= link_to d.mooddate, d %></td>
-            <td><%= d.moodword %></td>
-            <td><%= d.moodjournal.truncate_words(25) %></td>
             <td><%= d.moodrating %></td>
         </tr>
         <% end %>
@@ -42,6 +38,6 @@
 </div>
 
 
-<div>
+</div>
 
 </body>

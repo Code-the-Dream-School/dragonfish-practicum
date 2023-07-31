@@ -32,11 +32,24 @@
 <%= pie_chart data, colors: colors %>
 </div>
 
+<div style="display: flex;">
+  <div class="leftshift1"><button onclick="switchall()">All</button></div>
+  <div class="leftshift1"><button onclick="switchmoodrating()">Ratings</button></div>
+  <div class="leftshift1"><button onclick="switchmoodword()">Mood-Words</button></div>
+  <div class="leftshift1"><button onclick="switchmoodjournal()">Descriptions</button></div>
+</div>
 
-<div class="leftshift1"><%= render 'search/form'%></div>
+<div class="leftshift1" id="searchall"><%= render 'search/formall'%></div>
+
+<div  class="hidden" id="searchmoodrating"><%= render 'search/formmoodrating'%></div>
+
+<div  class="hidden" id="searchmoodword"><%= render 'search/formmoodword'%></div>
+
+<div  class="hidden" id="searchmoodjournal"><%= render 'search/formmoodjournal'%></div>
+
+<footer class="leftshift1" id="footer"></footer>
 
 
-    <footer id="footer"></footer>
 
 
 
@@ -66,8 +79,57 @@
     linechartbutton.classList.add("hidden");
   }
 
+  function switchmoodrating() {
+    var searchall = document.getElementById("searchall");
+    var searchmoodrating = document.getElementById("searchmoodrating");
+    var searchmoodword = document.getElementById("searchmoodword");
+    var searchmoodjournal = document.getElementById("searchmoodjournal");
+    
+    searchmoodjournal.classList.add("hidden");
+    searchmoodword.classList.add("hidden");
+    searchall.classList.add("hidden");
+    searchmoodrating.classList.remove("hidden");
 
+  }
 
+  function switchall() {
+    var searchall = document.getElementById("searchall");
+    var searchmoodrating = document.getElementById("searchmoodrating");
+    var searchmoodword = document.getElementById("searchmoodword");
+    var searchmoodjournal = document.getElementById("searchmoodjournal");
+    
+    searchmoodjournal.classList.add("hidden");
+    searchmoodword.classList.add("hidden");
+    searchmoodrating.classList.add("hidden");
+    searchall.classList.remove("hidden");
+
+  }
+
+  function switchmoodword() {
+    var searchall = document.getElementById("searchall");
+    var searchmoodrating = document.getElementById("searchmoodrating");
+    var searchmoodword = document.getElementById("searchmoodword");
+    var searchmoodjournal = document.getElementById("searchmoodjournal");
+
+    searchmoodrating.classList.add("hidden");
+    searchall.classList.add("hidden");
+    searchmoodjournal.classList.add("hidden");
+    searchmoodword.classList.remove("hidden");
+
+  }
+
+  function switchmoodjournal() {
+    var searchall = document.getElementById("searchall");
+    var searchmoodrating = document.getElementById("searchmoodrating");
+    var searchmoodword = document.getElementById("searchmoodword");
+    var searchmoodjournal = document.getElementById("searchmoodjournal");
+
+    searchmoodrating.classList.add("hidden");
+    searchall.classList.add("hidden");
+    searchmoodword.classList.add("hidden");
+    searchmoodjournal.classList.remove("hidden");
+
+  }
   const today = new Date();
 
   let thisYear = today.getFullYear();
@@ -81,7 +143,7 @@
 
   copyright.setAttribute('id','copyright');
 
-  copyright.innerText = "Natalie Petrolino (aka vsspnkr) " + thisYear + " ฅ^._.^ฅ";
+  copyright.innerText = "Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream " + thisYear + " ฅ^._.^ฅ";
 
   footer.appendChild(copyright);
 
@@ -92,7 +154,7 @@
     
     setInterval(function() {
         
-        catblink.innerText = (catblink.innerText == 'Natalie Petrolino (aka vsspnkr) ' + thisYear + ' ฅ^._.^ฅ' ? 'Natalie Petrolino (aka vsspnkr) ' + thisYear + ' ฅ^u_u^ฅ' : 'Natalie Petrolino (aka vsspnkr) ' + thisYear + ' ฅ^._.^ฅ');
+        catblink.innerText = (catblink.innerText == 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^._.^ฅ' ? 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^u_u^ฅ' : 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^._.^ฅ');
 
     }, 1000);
 
