@@ -9,5 +9,6 @@ class Day < ApplicationRecord
     end
     def self.ransackable_associations(auth_object = nil)
         []
-      end
+    end
+
 end
