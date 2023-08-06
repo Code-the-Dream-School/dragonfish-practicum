@@ -14,7 +14,10 @@
   </head>
 
   <body>
-    <%= render partial: "shared/alert" %>
-    <%= yield %>
+    <%= render partial: "shared/navbar" %>
+    <div class="container main-content">
+      <%= render partial: "shared/alert" %>
+      <%= yield %>
+    </div>
   </body>
 </html>
