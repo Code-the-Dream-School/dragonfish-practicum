@@ -18,6 +18,7 @@ button:hover {
 
 }
 
+
 .form {
     display: block;
     margin-top: 1%;
@@ -75,9 +76,13 @@ button:hover {
 
 .backbutton {
     display: block;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     margin-left: 1%;
+}
+
+.buttonselect {
+    border-color: #FBFFFF;
 }
 
 .notesbuttons {

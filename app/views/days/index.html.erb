@@ -1,8 +1,8 @@
 <% data = Day.group(:moodrating).count %>
-<% mood_colors = {5 => '#d9ffcc', 4 => '#b4ff99', 3 => '#8eff66', 2 => '#7bff4c', 1 => '#43ff00', 0 => '#36cc00', -1 => '#289900', -2 => '#1b6600', -3 => '#0d3300', -4 => '#112f06', -5 => '##000000'} %>
+<% mood_colors = {10 => '#d9ffcc', 9 => '#b4ff99', 8 => '#8eff66', 7 => '#7bff4c', 6 => '#43ff00', 5 => '#36cc00', 4 => '#289900', 3 => '#1b6600', 2 => '#0d3300', 1 => '#112f06', 0 => '##000000'} %>
 <% colors = [] %>
 <% data.each do |moodrating, _|%>
- <%  colors << mood_colors[moodrating] %>
+  <%  colors << mood_colors[moodrating] %>
 <% end %>
 
 <p style="color: green"><%= notice %></p>
@@ -11,7 +11,7 @@
     __  ___                ________                __            
    /  |/  /___  ____  ____/ /_  __/________ ______/ /_____  _____
   / /|_/ / __ \/ __ \/ __  / / / / ___/ __ `/ ___/ //_/ _ \/ ___/
- / /  / / /_/ / /_/ / /_/ / / / / /  / /_/ / /__/ ,< /  __/ /    
+ / /  / / /_/ / /_/ / /_/ / / / / / /  / /_/ / /__/ ,< /  __/ /    
 /_/  /_/\____/\____/\__,_/ /_/ /_/   \__,_/\___/_/|_|\___/_/     
                                                                  
 </pre>
@@ -19,18 +19,43 @@
 
 <button type='button' class= "backbutton" onclick="location.href='<%= new_day_path() %>';">Create new daily entry</button> 
 
-<div id="piechartbutton" class="leftshift1"><button onclick="switchpiechart()">See pie chart</button></div>
+<div id="piechartbutton" class="leftshift1" style="margin-bottom: 1%;"><button onclick="switchpiechart()">See pie chart</button></div>
+<div id="linechartbutton" class="hidden leftshift1" style="margin-bottom: 1%;"><button onclick="switchlinechart()">See line chart</button></div>
+<div id="columnchartbutton" class="hidden leftshift1" style="margin-bottom: 1%;"><button onclick="switchcolumnchart()">See column chart</button></div>
 
-<div id="linechartbutton" class="hidden leftshift1"><button onclick="switchlinechart()">See line chart</button></div>
-
-
-<div id="linechart">
-<%= line_chart Day.group_by_day(:mooddate).sum(:moodrating) %>
+<div id="linechartbuttons">
+  <div style="display: flex; margin-left: 2%;" >
+    <div class="leftshift1"><button id="linechartbuttonA" class="buttonselect" onclick="switchlinechartall()">All</button></div>
+    <div class="leftshift1"><button id="linechartbuttonW" onclick="switchweek()">This week</button></div>
+    <div class="leftshift1"><button id="linechartbuttonM" onclick="switchmonth()">This month</button></div>
+    <div class="leftshift1"><button id="linechartbuttonY" onclick="switchyear()">This year</button></div>
+  </div>
 </div>
 
-<div id="piechart" class="hidden">
-<%= pie_chart data, colors: colors %>
-</div>
+  <div id="linechart">
+  <%= line_chart Day.group_by_day(:mooddate, default_value: "missing").sum(:moodrating), library: {spanGaps: true}, min: 0, max: 10 %>
+  </div>
+
+    <div id="linechartweek" class="hidden">
+    <%= line_chart Day.group_by_day(:mooddate, default_value: "missing", range: 1.weeks.ago..Time.now, expand_range: true).sum(:moodrating), library: {spanGaps: true}, min: 0, max: 10 %>
+    </div>
+
+    <div id="linechartmonth" class="hidden">
+    <%= line_chart Day.group_by_day(:mooddate, default_value: "missing", range: 1.months.ago..Time.now, expand_range: true).sum(:moodrating), library: {spanGaps: true}, min: 0, max: 10 %>
+    </div>
+
+    <div id="linechartyear" class="hidden">
+    <%= line_chart Day.group_by_day(:mooddate, default_value: "missing", range: 1.years.ago..Time.now, expand_range: true).sum(:moodrating), library: {spanGaps: true}, min: 0, max: 10 %>
+    </div>
+
+  <div id="piechart" class="hidden">
+  <%= pie_chart data, colors: colors %>
+  </div>
+
+  <div id="columnchart" class="hidden">
+  <%= column_chart Day.group_by_day(:mooddate, current: true).sum(:moodrating), min: 0, max: 10, colors: ["#ff3131"] %>
+  </div>
+
 
 <div style="display: flex;">
   <div class="leftshift1"><button onclick="switchall()">All</button></div>
@@ -41,11 +66,11 @@
 
 <div class="leftshift1" id="searchall"><%= render 'search/formall'%></div>
 
-<div  class="hidden" id="searchmoodrating"><%= render 'search/formmoodrating'%></div>
+<div  class="leftshift1 hidden" id="searchmoodrating"><%= render 'search/formmoodrating'%></div>
 
-<div  class="hidden" id="searchmoodword"><%= render 'search/formmoodword'%></div>
+<div  class="leftshift1 hidden" id="searchmoodword"><%= render 'search/formmoodword'%></div>
 
-<div  class="hidden" id="searchmoodjournal"><%= render 'search/formmoodjournal'%></div>
+<div  class="leftshift1 hidden" id="searchmoodjournal"><%= render 'search/formmoodjournal'%></div>
 
 <footer class="leftshift1" id="footer"></footer>
 
@@ -60,11 +85,39 @@
     var piechart = document.getElementById("piechart");
     var linechartbutton = document.getElementById("linechartbutton");
     var piechartbutton = document.getElementById("piechartbutton");
+    var columnchart = document.getElementById("columnchart");
+    var columnchartbutton = document.getElementById("columnchartbutton");
+    var linechartbuttons = document.getElementById("linechartbuttons");
+
 
     piechart.classList.remove("hidden");
     linechart.classList.add("hidden");
     piechartbutton.classList.add("hidden");
+    linechartbutton.classList.add("hidden");
+    columnchart.classList.add("hidden");
+    columnchartbutton.classList.remove("hidden");
+    linechartbuttons.classList.add("hidden");
+  
+  }
+
+  function switchcolumnchart() {
+    var linechart = document.getElementById("linechart");
+    var piechart = document.getElementById("piechart");
+    var linechartbutton = document.getElementById("linechartbutton");
+    var piechartbutton = document.getElementById("piechartbutton");
+    var columnchart = document.getElementById("columnchart");
+    var columnchartbutton = document.getElementById("columnchartbutton");
+    var linechartbuttons = document.getElementById("linechartbuttons");
+
+
+    piechart.classList.add("hidden");
+    linechart.classList.add("hidden");
+    piechartbutton.classList.add("hidden");
     linechartbutton.classList.remove("hidden");
+    columnchart.classList.remove("hidden");
+    columnchartbutton.classList.add("hidden");
+    linechartbuttons.classList.add("hidden");
+
   }
 
   function switchlinechart() {
@@ -72,12 +125,122 @@
     var piechart = document.getElementById("piechart");
     var linechartbutton = document.getElementById("linechartbutton");
     var piechartbutton = document.getElementById("piechartbutton");
+    var columnchart = document.getElementById("columnchart");
+    var columnchartbutton = document.getElementById("columnchartbutton");
+    var linechartbuttons = document.getElementById("linechartbuttons");
+
+    
 
     piechart.classList.add("hidden");
     linechart.classList.remove("hidden");
     piechartbutton.classList.remove("hidden");
     linechartbutton.classList.add("hidden");
+    columnchart.classList.add("hidden");
+    columnchartbutton.classList.add("hidden");
+    linechartbuttons.classList.remove("hidden");
+
   }
+
+
+////////////////
+
+
+  function switchweek() {
+    var linechartall = document.getElementById("linechart");
+    var linechartweek = document.getElementById("linechartweek");
+    var linechartmonth = document.getElementById("linechartmonth");
+    var linechartyear = document.getElementById("linechartyear");
+    var linechartbuttonA = document.getElementById("linechartbuttonA");
+    var linechartbuttonW = document.getElementById("linechartbuttonW");
+    var linechartbuttonM = document.getElementById("linechartbuttonM");
+    var linechartbuttonY = document.getElementById("linechartbuttonY");
+
+    linechartall.classList.add("hidden");
+    linechartweek.classList.remove("hidden");
+    linechartmonth.classList.add("hidden");
+    linechartyear.classList.add("hidden");
+    
+    linechartbuttonA.classList.remove("buttonselect");
+    linechartbuttonW.classList.add("buttonselect");
+    linechartbuttonM.classList.remove("buttonselect");
+    linechartbuttonY.classList.remove("buttonselect");
+ 
+  }
+
+  function switchmonth() {
+    var linechartall = document.getElementById("linechart");
+    var linechartweek = document.getElementById("linechartweek");
+    var linechartmonth = document.getElementById("linechartmonth");
+    var linechartyear = document.getElementById("linechartyear");
+    var linechartbuttonA = document.getElementById("linechartbuttonA");
+    var linechartbuttonW = document.getElementById("linechartbuttonW");
+    var linechartbuttonM = document.getElementById("linechartbuttonM");
+    var linechartbuttonY = document.getElementById("linechartbuttonY");
+
+    linechartall.classList.add("hidden");
+    linechartweek.classList.add("hidden");
+    linechartmonth.classList.remove("hidden");
+    linechartyear.classList.add("hidden");
+
+    linechartbuttonA.classList.remove("buttonselect");
+    linechartbuttonW.classList.remove("buttonselect");
+    linechartbuttonM.classList.add("buttonselect");
+    linechartbuttonY.classList.remove("buttonselect");
+
+
+  }
+
+  function switchyear() {
+    var linechartall = document.getElementById("linechart");
+    var linechartweek = document.getElementById("linechartweek");
+    var linechartmonth = document.getElementById("linechartmonth");
+    var linechartyear = document.getElementById("linechartyear");
+    var linechartbuttonA = document.getElementById("linechartbuttonA");
+    var linechartbuttonW = document.getElementById("linechartbuttonW");
+    var linechartbuttonM = document.getElementById("linechartbuttonM");
+    var linechartbuttonY = document.getElementById("linechartbuttonY");
+
+    linechartall.classList.add("hidden");
+    linechartweek.classList.add("hidden");
+    linechartmonth.classList.add("hidden");
+    linechartyear.classList.remove("hidden");
+
+    linechartbuttonA.classList.remove("buttonselect");
+    linechartbuttonW.classList.remove("buttonselect");
+    linechartbuttonM.classList.remove("buttonselect");
+    linechartbuttonY.classList.add("buttonselect");
+
+
+
+  }
+
+  function switchlinechartall() {
+    var linechartall = document.getElementById("linechart");
+    var linechartweek = document.getElementById("linechartweek");
+    var linechartmonth = document.getElementById("linechartmonth");
+    var linechartyear = document.getElementById("linechartyear");
+    var linechartbuttonA = document.getElementById("linechartbuttonA");
+    var linechartbuttonW = document.getElementById("linechartbuttonW");
+    var linechartbuttonM = document.getElementById("linechartbuttonM");
+    var linechartbuttonY = document.getElementById("linechartbuttonY");
+
+    linechartall.classList.remove("hidden");
+    linechartweek.classList.add("hidden");
+    linechartmonth.classList.add("hidden");
+    linechartyear.classList.add("hidden");
+
+    linechartbuttonA.classList.add("buttonselect");
+    linechartbuttonW.classList.remove("buttonselect");
+    linechartbuttonM.classList.remove("buttonselect");
+    linechartbuttonY.classList.remove("buttonselect");
+
+
+
+  }
+  
+
+////////////////
+
 
   function switchmoodrating() {
     var searchall = document.getElementById("searchall");
@@ -153,7 +316,7 @@
     let catblink = document.getElementById('copyright');
     
     setInterval(function() {
-        
+      
         catblink.innerText = (catblink.innerText == 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^._.^ฅ' ? 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^u_u^ฅ' : 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^._.^ฅ');
 
     }, 1000);
