@@ -1,21 +1,20 @@
 
-* {
+
+
+.main-content {
     background-color: black;
     color: aqua;
     font-family: monospace;
 }
 
-button, .button{
-
+button {
     border-color: #222222;
     background-color: #222222;
-    
+    color: aqua;
 }
 
 button:hover {
-
     background-color: #333333;
-
 }
 
 
@@ -27,7 +26,6 @@ button:hover {
 
 .block {
     display: block;
-    
 }
 
 .showlink {
@@ -37,8 +35,6 @@ button:hover {
 .divider {
     margin-left: -2%;
     margin-top: 4%;
-    
-
 }
 
 .daydetails {
@@ -55,7 +51,6 @@ button:hover {
     margin-left: 2%;
 }
 
-
 .daydate {
    margin-left: -2%;
 }
@@ -67,7 +62,6 @@ button:hover {
 .notedetails {
     display: block;
     margin-left: 1%;
-
 }
 
 .hidden {
@@ -91,6 +85,7 @@ button:hover {
     margin-bottom: 2%;
 
 }
+
 .leftshift1 {
     margin-left: 1%;
 }
@@ -100,6 +95,23 @@ h2, h3 {
 }
 
 .actions {
-
     margin-top: 1%;
+}
+
+.sort_link {
+    color: aqua;
+}
+
+.myNavBar {
+    display: flex;
+    color: aqua;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-decoration: none;
+    font-family: monospace;
+}
+
+.myNavBarBrand {
+    font-size: x-large;
 }
