@@ -10,7 +10,13 @@
           <%= link_to "Home", root_path, class: "myNavBar" %>
         </li>
         <li class="nav-item">
-        <%= link_to "Days", days_path, class: "myNavBar" %>
+          <%= link_to "Days", days_path, class: "myNavBar" %>
+        <li class="nav-item">
+          <% if signed_in? %> 
+            <%= link_to current_user.email, class: "myNavBar" %>
+          <% else %>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account Info <span class="caret"></span></a>
+          <% end %>
         </li>
         <li class="nav-item">
         <%= link_to "Logout", destroy_user_session_path, class: "myNavBar" %>
