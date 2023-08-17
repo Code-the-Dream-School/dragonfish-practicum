@@ -18,11 +18,11 @@
     <%= form.date_field :mooddate %>
   </div>
   <div class="form">
-    <%= form.label :moodrating, "Rating from -5 - 5: "%>
+    <%= form.label :moodrating, "Rating from 0 - 10: "%>
   </div>
   
   <div class="form">
-      <% -5.upto(5) do |i| %>
+      <% 0.upto(10) do |i| %>
       <%= form.radio_button(:moodrating, i) %>
       <%= form.label :moodrating,  :value => i%>
       <% end %>
