@@ -10,7 +10,7 @@
 </div>
 
 <div id="notes">
-  <h2>Notes</h2>
+  <strong>Notes</strong>
 
   <% @day.notes.each do |note| %>
     <div class= "notedetails">
@@ -22,8 +22,6 @@
       </div>
     </div>
   <% end %>
-
-  <h2>Add a note</h2>
 
   <div class="leftshift1"><%= render partial: "notes/form", locals: {note: @day.notes.new} %></div>
 
