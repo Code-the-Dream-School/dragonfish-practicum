@@ -39,21 +39,17 @@
             <th><%= sort_link(@q, :moodword, "Word") %></th>
             <th><%= sort_link(@q, :moodjournal, "Description") %></th>
             <th><%= sort_link(@q, :moodrating, "Rating") %></th>
-            <th><%= sort_link(@q, :isbookmarked, "Bookmark") %></th>
             </tr>
         </thead>  
     <tbody>
         <% @moodresults.each do |d| %>
         <tr>
-            <td><%= link_to d.mooddate, d %></td>
+            <%= form_for d do |f| %>
+            <td style="display: flex;"><%= link_to d.mooddate, d %><div style="background-color:#212529;" class="bookmark" ><%= f.check_box :isbookmarked, checked_value: :true, unchecked_value: :false, onchange: "this.form.submit();", :title => "Bookmark" %></div></td>
+            <% end %>
             <td><%= d.moodword %></td>
             <td><%= d.moodjournal.truncate_words(25) %></td>
             <td><%= d.moodrating %></td>
-            <td >
-                <%= form_for d do |f| %>
-                <div style="background-color:#212529;" ><%= f.check_box :isbookmarked, checked_value: :true, unchecked_value: :false, onchange: "this.form.submit();" %></div>
-                <% end %>
-            </td>
         </tr>
         <% end %>
     </tbody>

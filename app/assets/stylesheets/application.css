@@ -146,6 +146,11 @@ h2, h3 {
     background-color: #212529;
 }
 
+.bookmark {
+
+    margin-left: 3%;
+}
+
 #notes {
 
     margin-top: 2%;
