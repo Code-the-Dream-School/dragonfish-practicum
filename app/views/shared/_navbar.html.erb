@@ -13,7 +13,7 @@
         </li>
         <li class="nav-item myNavBar">
           <% if signed_in? %> 
-            Welcome back, <%= current_user.first_name %>
+            Welcome back, <%= current_user.email %>
           <% else %>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account Info <span class="caret"></span></a>
           <% end %>
@@ -22,9 +22,7 @@
     </div>
     <% if current_user %>
       <li class="nav-item myNavBar">
-        <%= link_to "Logout", destroy_user_session_path, 
-            data: { turbo_method: :delete }, 
-            class: "myNavBar" %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "myNavBar" %>
       </li>
     <% end %>
         
