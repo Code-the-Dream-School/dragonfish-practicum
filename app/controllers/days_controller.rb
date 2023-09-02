@@ -2,8 +2,18 @@ class DaysController < ApplicationController
   before_action :authenticate_user!
   before_action :set_day, only: %i[ show edit update destroy ]
 
+  def nil.split *args
+    nil # splitting of nil, in any imaginable way, can only result again in nil
+  end
+  
   def index
-
+    if params[:days_between]
+      start_split = params[:days_between].split(" - ").first
+    @starts = Date.strptime(start_split, "%m/%d/%Y")
+      end_split = params[:days_between].split(" - ").second
+    @ends = Date.strptime(end_split, "%m/%d/%Y")
+    else
+    end
     @days = Day.all
 
     @moodrating = Day.group(:moodrating)
@@ -12,6 +22,8 @@ class DaysController < ApplicationController
     @moodresults = @q.result(distinct: true)
 
   end
+
+  
 
   def show
   end
