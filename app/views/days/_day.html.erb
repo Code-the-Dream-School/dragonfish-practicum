@@ -1,7 +1,13 @@
 <div id="<%= dom_id day %>" class = "day">
+  
   <p>
     <div class="daydate"><strong>Date</strong></div>
+    <%= form_for day do |f| %>
+    <div style="display: flex;">
     <div class="daydate"><%= day.mooddate %></div>
+    <div class="bookmark"><%= f.check_box :isbookmarked, checked_value: :true, unchecked_value: :false, onchange: "this.form.submit();", :title => "Bookmark"  %></div>
+    <% end %>
+    </div>
   </p>
 
   <p>

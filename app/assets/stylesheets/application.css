@@ -30,6 +30,12 @@ footer {
 
 }
 
+input[type='checkbox'] {
+    accent-color: #FFF01F;
+    background-color: #FFF01F;
+    cursor: pointer;
+}
+
 .maincontent {
 
     margin-left: -7%;
@@ -135,6 +141,15 @@ h2, h3 {
 .myNavBarBrand {
     font-family: sans-serif;
     font-size: x-large;
+}
+
+.colordark {
+    background-color: #212529;
+}
+
+.bookmark {
+
+    margin-left: 3%;
 }
 
 #notes {

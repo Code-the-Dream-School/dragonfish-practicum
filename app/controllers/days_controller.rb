@@ -59,7 +59,7 @@ class DaysController < ApplicationController
 
     respond_to do |format|
       if @day.update(day_params)
-        format.html { redirect_to day_url(@day), notice: "Day updated" }
+        format.html { redirect_to days_path, notice: "Day updated" }
         format.json { render :show, status: :ok, location: @day }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -91,7 +91,7 @@ class DaysController < ApplicationController
 
     def day_params
 
-      params.require(:day).permit(:mooddate, :moodrating, :moodjournal, :moodword)
+      params.require(:day).permit(:mooddate, :moodrating, :moodjournal, :moodword, :isbookmarked)
       
     end
 end

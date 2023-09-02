@@ -43,6 +43,14 @@
   <div class="form">
     <%= form.text_field :moodword %>
   </div>
+
+  <div class="form">
+    <%= form.label :isbookmarked, "Bookmark? "%>
+  </div>
+
+  <div class="form">
+  <%= form.check_box :isbookmarked, checked_value: :true, unchecked_value: :false %>
+  </div>
   
   <div class="form">
     <%= form.submit class: "button btn-primary" %>
