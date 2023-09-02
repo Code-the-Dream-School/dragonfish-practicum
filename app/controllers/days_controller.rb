@@ -21,6 +21,8 @@ class DaysController < ApplicationController
     @q = Day.ransack(params[:q])
     @moodresults = @q.result(distinct: true)
 
+   
+
   end
 
   

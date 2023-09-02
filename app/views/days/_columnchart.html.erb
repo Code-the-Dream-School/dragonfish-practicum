@@ -1,0 +1,1 @@
+<%= column_chart Day.group_by_day(:mooddate, current: true).sum(:moodrating), min: 0, max: 10, colors: ["#ff3131"] %>

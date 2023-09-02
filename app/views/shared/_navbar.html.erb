@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-  <%= link_to "MoodTracker", days_path, class: "myNavBar myNavBarBrand" %>
+  <%= link_to "M|T", days_path, class: "myNavBar myNavBarBrand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,7 +9,9 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "myNavBar" %>
         <li class="nav-item">
-          <%= link_to "Days", days_path, class: "myNavBar" %>
+
+        <%= link_to "Tracker", days_path, class: "myNavBar" %>
+        </li>
         <li class="nav-item">
           <% if signed_in? %> 
             <%= link_to current_user.email, class: "myNavBar" %>

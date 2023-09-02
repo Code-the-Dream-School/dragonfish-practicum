@@ -1,0 +1,8 @@
+<% data = Day.group(:moodrating).count %>
+<% mood_colors = {10 => '#d9ffcc', 9 => '#b4ff99', 8 => '#8eff66', 7 => '#7bff4c', 6 => '#43ff00', 5 => '#36cc00', 4 => '#289900', 3 => '#1b6600', 2 => '#0d3300', 1 => '#112f06', 0 => '##000000'} %>
+<% colors = [] %>
+<% data.each do |moodrating, _|%>
+  <%  colors << mood_colors[moodrating] %>
+<% end %>
+
+<%= pie_chart data, colors: colors %>

@@ -1,10 +1,16 @@
 @import url("https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/extra/vanilla-datetimerange-picker-dark.css");
 
 
-.main-content {
+* {
     background-color: black;
     color: aqua;
     font-family: monospace;
+}
+
+body {
+
+    background-color: black;
+
 }
 
 button {
@@ -17,6 +23,19 @@ button:hover {
     background-color: #333333;
 }
 
+footer {
+
+    margin-left: -1%;
+    margin-top: 5%;
+
+}
+
+.maincontent {
+
+    margin-left: -7%;
+    margin-right: -7%;
+
+}
 
 .form {
     display: block;
@@ -114,5 +133,12 @@ h2, h3 {
 }
 
 .myNavBarBrand {
+    font-family: sans-serif;
     font-size: x-large;
+}
+
+#notes {
+
+    margin-top: 2%;
+
 }
