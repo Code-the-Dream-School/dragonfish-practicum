@@ -1,4 +1,5 @@
 class DaysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_day, only: %i[ show edit update destroy ]
 
   def nil.split *args
