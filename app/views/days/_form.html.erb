@@ -15,7 +15,7 @@
   </div>
 
   <div class="form">
-    <%= form.date_field :mooddate %>
+    <%= form.date_field :mooddate, class: "d" %>
   </div>
   <div class="form">
     <%= form.label :moodrating, "Rating from 0 - 10: "%>
@@ -33,7 +33,7 @@
   </div>
 
   <div class="form">
-    <%= form.text_area :moodjournal %>
+    <%= form.text_area :moodjournal, class: "d" %>
   </div>
 
   <div class="form">
@@ -41,7 +41,7 @@
   </div>
 
   <div class="form">
-    <%= form.text_field :moodword %>
+    <%= form.text_field :moodword, class: "d" %>
   </div>
 
   <div class="form">
@@ -53,7 +53,7 @@
   </div>
   
   <div class="form">
-    <%= form.submit class: "button btn-primary" %>
+    <%= form.submit class: "button btn-primary", class: "d" %>
   </div>
 
 <% end %>
