@@ -7,11 +7,11 @@
 
 <p style="color: green"><%= notice %></p>
 
-<pre id="t1">
+<pre class="d" id="t1">
     __  ___                ________                __            
    /  |/  /___  ____  ____/ /_  __/________ ______/ /_____  _____
   / /|_/ / __ \/ __ \/ __  / / / / ___/ __ `/ ___/ //_/ _ \/ ___/
- / /  / / /_/ / /_/ / /_/ / / / / / /  / /_/ / /__/ ,< /  __/ /    
+ / /  / / /_/ / /_/ / /_/ / / / / / /  / /_/ / /__/ ,< /  __/     
 /_/  /_/\____/\____/\__,_/ /_/ /_/   \__,_/\___/_/|_|\___/_/     
                                                                  
 </pre>
@@ -30,8 +30,8 @@
       <div class="leftshift1"><button id="linechartbuttonC" onclick="switchcustom()">Custom range</button></div>
       <div class="leftshift1 hidden" id="calendersearchbutton">
         <%= form_with url: days_path, method: :get do |form| %>
-          <%= form.text_field :days_between, value: params[:days_between], data: {controller: "daterangepicker"} %>
-          <%= form.submit "search" %>
+          <%= form.text_field :days_between, value: params[:days_between], class: "d", data: {controller: "daterangepicker"} %>
+          <%= form.submit "search", class: "d" %>
         <% end %>
       </div>
     </div>
@@ -70,6 +70,6 @@
 
   <div  class="leftshift1 hidden" id="searchmoodjournal"><%= render 'search/formmoodjournal'%></div>
 
-  <footer id="footer"></footer>
+  <footer class="d" id="footer"></footer>
 
 </body>

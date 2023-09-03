@@ -1,11 +1,11 @@
 <%= form_for [@day, note] do |f| %>
 
   <div class="field">
-    <%= f.label :content, "Note" %>
-    <%= f.text_area :content %>
+    <%= f.label :content, "Note", class: "d" %>
+    <%= f.text_area :content, class: "d" %>
   </div>
 
   <div class="actions">
-    <%= f.submit class: "button btn-primary"%>
+    <%= f.submit class: "button btn-primary", class: "d"%>
   </div>
 <% end %>

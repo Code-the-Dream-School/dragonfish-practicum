@@ -1,22 +1,22 @@
 <div style="display: flex;">
     <div>
     <%= search_form_for(@q, url: days_path, method: :get) do |form| %>
-        <%= form.search_field :moodword_or_moodrating_or_mooddate_or_moodjournal_eq, placeholder: "Search..." %>
-        <%= form.submit "Search!" %>
+        <%= form.search_field :moodword_or_moodrating_or_mooddate_or_moodjournal_eq, class: "d", placeholder: "Search..." %>
+        <%= form.submit "Search!", class: "d" %>
     <% end %>
     </div>    
 
     <div>
     <%= search_form_for(@q, url: days_path, method: :get) do |form| %>
         <div class="hidden"><%= form.search_field :isbookmarked_eq, value: true %></div>
-        <div style="margin-left: 6%;"><%= form.submit "Bookmarks" %></div>
+        <div style="margin-left: 6%;"><%= form.submit "Bookmarks", class: "d" %></div>
     <% end %> 
     </div>    
 
     <div style="margin-left: 1%;">
     <%= search_form_for(@q, url: days_path, method: :get) do |form| %>
         <div class="hidden"><%= form.search_field :moodword_or_moodrating_or_mooddate_or_moodjournal_eq %></div>
-        <div><%= form.submit "Remove bookmark filter" %></div>
+        <div><%= form.submit "Remove bookmark filter", class: "d" %></div>
     <% end %>
     </div> 
 </div>
@@ -27,12 +27,12 @@
 <body style="background-color:black;">
 
 <div>
-<%= pluralize(@moodresults.count, "Result") %>
+<div class="d"><%= pluralize(@moodresults.count, "Result") %></div>
 
 
 
-<div class="container mt-4">
-    <table class="table table-dark">
+<div class="d container mt-4" style="background-color:#212529;">
+    <table class="table table-dark table-hover ">
         <thead>
             <tr>
             <th><%= sort_link(@q, :mooddate, "Date", default_order: :mooddate) %></th>
@@ -45,10 +45,17 @@
         <% @moodresults.each do |d| %>
         <tr>
             <%= form_for d do |f| %>
-            <td style="display: flex;"><%= link_to d.mooddate, d %><div style="background-color:#212529;" class="bookmark" ><%= f.check_box :isbookmarked, checked_value: :true, unchecked_value: :false, onchange: "this.form.submit();", :title => "Bookmark" %></div></td>
+            <td style="display: flex;">
+            <%= link_to d.mooddate, d %>
+            <div style="background-color:#212529;" class="bookmark" >
+            <%= f.check_box :isbookmarked, checked_value: :true, unchecked_value: :false, onchange: "this.form.submit();", :title => "Bookmark" %>
+            </div>
             <% end %>
+            <div class="tbb"><button type='button' onclick="location.href='<%= edit_day_path(d) %>';">Edit</button></div>
+            <div class="tbb"><%= button_to "Delete", d, method: :delete, data: { turbo_confirm: "Are you sure?"} %></div>
+            </td>
             <td><%= d.moodword %></td>
-            <td><%= d.moodjournal.truncate_words(25) %></td>
+            <td><%= d.moodjournal.truncate_words(10) %></td>
             <td><%= d.moodrating %></td>
         </tr>
         <% end %>

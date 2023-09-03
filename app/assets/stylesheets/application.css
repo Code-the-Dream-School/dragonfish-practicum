@@ -1,10 +1,13 @@
 @import url("https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/extra/vanilla-datetimerange-picker-dark.css");
 
 
-* {
+
+.d {
+
     background-color: black;
     color: aqua;
     font-family: monospace;
+
 }
 
 body {
@@ -47,6 +50,9 @@ input[type='checkbox'] {
     display: block;
     margin-top: 1%;
     margin-bottom: 1%;
+    background-color: black;
+    color: aqua;
+    font-family: monospace;
 }
 
 .block {
@@ -147,6 +153,11 @@ h2, h3 {
 }
 
 .bookmark {
+
+    margin-left: 3%;
+}
+
+.tbb {
 
     margin-left: 3%;
 }
