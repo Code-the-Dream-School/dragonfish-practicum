@@ -138,9 +138,10 @@ h2, h3 {
     color: aqua;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
     text-decoration: none;
     font-family: monospace;
+    list-style-type: none;
 }
 
 .myNavBarBrand {
