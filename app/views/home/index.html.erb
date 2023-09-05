@@ -1,6 +1,14 @@
 <div class="d-flex align-items-center justify-content-center">
   <h1>Home#index</h1>
 
+  <div class="col">
+		<h4>Sign Up Today</h4>
+			<%= link_to 'Sign Up', new_user_registration_path, class: "mt-2 btn btn-primary" %>
+		<hr>
+		<h5 class="mt-2">Already have an account?</h5>
+			<%= link_to 'Sign In', new_user_session_path, class: "mt-2 btn btn-primary" %>
+		</div>
+
 </div>
 
 

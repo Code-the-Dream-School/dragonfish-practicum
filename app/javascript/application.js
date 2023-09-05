@@ -9,35 +9,26 @@ import "Chart.bundle"
 
 // footer animation vvv
 
-  const today = new Date();
+window.footeranimation = function() {
+  var today = new Date();
 
   var thisYear = today.getFullYear();
 
   console.log(thisYear);
 
-  const footer = document.querySelector("#footer");
+  var footer = document.getElementById("footer");
 
-  const copyright = document.createElement("p");
-
-
-  copyright.setAttribute('id','copyright');
-
-  copyright.innerText = "Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream " + thisYear + " ฅ^._.^ฅ";
-
-  footer.appendChild(copyright);
-
-
-  window.addEventListener("load", function() {
-    
-    var catblink = document.getElementById('copyright');
-    
+  footer.innerText = "Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream " + thisYear + " ฅ^._.^ฅ";
+  
     setInterval(function() {
-      
-        catblink.innerText = (catblink.innerText == 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^._.^ฅ' ? 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^u_u^ฅ' : 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^._.^ฅ');
+        
+        footer.innerText = (footer.innerText == 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^._.^ฅ' ? 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ｢^u_u^｢' : 'Natalie Petrolino (aka vsspnkr) and Greg Curl with Code the Dream ' + thisYear + ' ฅ^._.^ฅ');
 
     }, 1000);
 
-} , false);
+  }
+  
+footeranimation();
 
 // all button functions vvv
 
@@ -177,11 +168,21 @@ window.switchmoodrating = function() {
   var searchmoodrating = document.getElementById("searchmoodrating");
   var searchmoodword = document.getElementById("searchmoodword");
   var searchmoodjournal = document.getElementById("searchmoodjournal");
-  
+  var allinfobutton = document.getElementById("allinfobutton");
+  var ratingsbutton = document.getElementById("ratingsbutton");
+  var moodwordsbutton = document.getElementById("moodwordsbutton");
+  var descriptionsbutton = document.getElementById("descriptionsbutton");
+
+
   searchmoodjournal.classList.add("hidden");
   searchmoodword.classList.add("hidden");
   searchall.classList.add("hidden");
   searchmoodrating.classList.remove("hidden");
+
+  allinfobutton.classList.remove("buttonselect");
+  ratingsbutton.classList.add("buttonselect");
+  moodwordsbutton.classList.remove("buttonselect");
+  descriptionsbutton.classList.remove("buttonselect");
 
 }
 
@@ -190,11 +191,20 @@ window.switchall = function() {
   var searchmoodrating = document.getElementById("searchmoodrating");
   var searchmoodword = document.getElementById("searchmoodword");
   var searchmoodjournal = document.getElementById("searchmoodjournal");
+  var allinfobutton = document.getElementById("allinfobutton");
+  var ratingsbutton = document.getElementById("ratingsbutton");
+  var moodwordsbutton = document.getElementById("moodwordsbutton");
+  var descriptionsbutton = document.getElementById("descriptionsbutton");
   
   searchmoodjournal.classList.add("hidden");
   searchmoodword.classList.add("hidden");
   searchmoodrating.classList.add("hidden");
   searchall.classList.remove("hidden");
+
+  allinfobutton.classList.add("buttonselect");
+  ratingsbutton.classList.remove("buttonselect");
+  moodwordsbutton.classList.remove("buttonselect");
+  descriptionsbutton.classList.remove("buttonselect");
 
 }
 
@@ -203,11 +213,20 @@ window.switchmoodword = function() {
   var searchmoodrating = document.getElementById("searchmoodrating");
   var searchmoodword = document.getElementById("searchmoodword");
   var searchmoodjournal = document.getElementById("searchmoodjournal");
+  var allinfobutton = document.getElementById("allinfobutton");
+  var ratingsbutton = document.getElementById("ratingsbutton");
+  var moodwordsbutton = document.getElementById("moodwordsbutton");
+  var descriptionsbutton = document.getElementById("descriptionsbutton");
 
   searchmoodrating.classList.add("hidden");
   searchall.classList.add("hidden");
   searchmoodjournal.classList.add("hidden");
   searchmoodword.classList.remove("hidden");
+
+  allinfobutton.classList.remove("buttonselect");
+  ratingsbutton.classList.remove("buttonselect");
+  moodwordsbutton.classList.add("buttonselect");
+  descriptionsbutton.classList.remove("buttonselect");
 
 }
 
@@ -216,10 +235,19 @@ window.switchmoodjournal = function() {
   var searchmoodrating = document.getElementById("searchmoodrating");
   var searchmoodword = document.getElementById("searchmoodword");
   var searchmoodjournal = document.getElementById("searchmoodjournal");
+  var allinfobutton = document.getElementById("allinfobutton");
+  var ratingsbutton = document.getElementById("ratingsbutton");
+  var moodwordsbutton = document.getElementById("moodwordsbutton");
+  var descriptionsbutton = document.getElementById("descriptionsbutton");
 
   searchmoodrating.classList.add("hidden");
   searchall.classList.add("hidden");
   searchmoodword.classList.add("hidden");
   searchmoodjournal.classList.remove("hidden");
+
+  allinfobutton.classList.remove("buttonselect");
+  ratingsbutton.classList.remove("buttonselect");
+  moodwordsbutton.classList.remove("buttonselect");
+  descriptionsbutton.classList.add("buttonselect");
 
 }

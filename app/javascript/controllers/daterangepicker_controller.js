@@ -8,6 +8,8 @@ export default class extends Controller {
       autoApply: true,
       ranges: {
         'Last 7 Days': [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')],
+        'Last 30 Days': [moment().subtract(30, 'days').startOf('day'), moment().endOf('day')],
+        'Last 60 Days': [moment().subtract(60, 'days').startOf('day'), moment().endOf('day')],
         'This Month': [moment().startOf('month').startOf('day'), moment().endOf('month').endOf('day')],
         'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
         'This Year': [moment().startOf('year').startOf('day'), moment().endOf('year').endOf('day')],
