@@ -8,14 +8,14 @@
     <div>
     <%= search_form_for(@q, url: days_path, method: :get) do |form| %>
         <div class="hidden"><%= form.search_field :isbookmarked_eq, value: true %></div>
-        <div style="margin-left: 6%;"><%= form.submit "Bookmarks", class: "d" %></div>
+        <div style="margin-left: 6%;"><%= form.submit "Bookmarks", class: "submitbutton" %></div>
     <% end %> 
     </div>    
 
     <div style="margin-left: 1%;">
     <%= search_form_for(@q, url: days_path, method: :get) do |form| %>
         <div class="hidden"><%= form.search_field :moodword_or_moodrating_or_mooddate_or_moodjournal_eq %></div>
-        <div><%= form.submit "Remove bookmark filter", class: "d" %></div>
+        <div><%= form.submit "Remove bookmark filter", class: "submitbutton" %></div>
     <% end %>
     </div> 
 

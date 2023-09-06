@@ -7,22 +7,26 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: "myNavBar" %>
+          <%= link_to "Home", root_path, class: "myNavBar navtext" %>
+        </li>
         <li class="nav-item">
-        <%= link_to "Tracker", days_path, class: "myNavBar" %>
+        <%= link_to "Tracker", days_path, class: "myNavBar navtext" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Table", "#{days_path}#tableall", class: "myNavBar navtext" %>
         </li>
         <li class="nav-item myNavBar">
           <% if signed_in? %> 
-            Welcome back, <%= current_user.email %>
-          <% else %>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account Info <span class="caret"></span></a>
+            Welcome back, <%= current_user.email %>         
+           <%# else %>
+            <%#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account Info <span class="caret"></span></a> %>
           <% end %>
         </li>
       </ul>
     </div>
     <% if current_user %>
       <li class="nav-item myNavBar">
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "myNavBar" %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "myNavBar navtext" %>
       </li>
     <% end %>
         

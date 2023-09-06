@@ -106,8 +106,21 @@ input[type='checkbox'] {
     margin-left: 1%;
 }
 
+.submitbutton {
+    border-color: #222222;
+    background-color: #222222;
+    color: aqua;
+    font-family: monospace;
+}
+
+.submitbutton:hover {
+    background-color: #333333;
+}
+
 .buttonselect {
+
     border-color: #FBFFFF;
+
 }
 
 .notesbuttons {
@@ -118,10 +131,6 @@ input[type='checkbox'] {
 }
 
 .leftshift1 {
-    margin-left: 1%;
-}
-
-h2, h3 {
     margin-left: 1%;
 }
 
@@ -149,6 +158,12 @@ h2, h3 {
     font-size: x-large;
 }
 
+.navtext:hover  {
+
+    color: #c0ffff;
+
+}
+
 .colordark {
     background-color: #212529;
 }
@@ -162,6 +177,23 @@ h2, h3 {
 
     margin-left: 3%;
 }
+
+.cat {
+    background-color: black;
+    color: aqua;
+    font-family: monospace;
+    margin-left: 59%;
+    margin-top: -23%
+}
+
+.heart {
+    background-color: black;
+    color: aqua;
+    font-family: monospace;
+    margin-left: 50%;
+    margin-top: -43%
+}
+
 
 #notes {
 
