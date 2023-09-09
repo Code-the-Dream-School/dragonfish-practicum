@@ -14,7 +14,7 @@ class DaysController < ApplicationController
     @ends = Date.strptime(end_split, "%m/%d/%Y")
     else
     end
-    @days = Day.all
+    @days = current_user.days
 
     @moodrating = Day.group(:moodrating)
 

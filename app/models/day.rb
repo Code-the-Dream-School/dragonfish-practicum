@@ -1,5 +1,8 @@
 class Day < ApplicationRecord
+    belongs_to :user
     has_many :notes
+    
+
     validates :mooddate, :moodrating, :moodword, presence: true
     validates :moodrating, numericality: { only_integer: true, less_than_or_equal_to: 10, greater_than_or_equal_to: 0    } 
     validates :mooddate, uniqueness: true
