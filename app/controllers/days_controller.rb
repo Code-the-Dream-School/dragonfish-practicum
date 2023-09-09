@@ -1,12 +1,14 @@
 class DaysController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_day, only: %i[ show edit update destroy ]
+  before_action :set_day, only: %i[ show edit create update destroy ]
 
   def nil.split *args
     nil # splitting of nil, in any imaginable way, can only result again in nil
   end
   
   def index
+    @days = current_user.days
+
     if params[:days_between]
       start_split = params[:days_between].split(" - ").first
     @starts = Date.strptime(start_split, "%m/%d/%Y")
@@ -14,11 +16,10 @@ class DaysController < ApplicationController
     @ends = Date.strptime(end_split, "%m/%d/%Y")
     else
     end
-    @days = Day.all
 
     @moodrating = Day.group(:moodrating)
 
-    @q = Day.ransack(params[:q])
+    @q = @day.ransack(params[:q])
     @moodresults = @q.result(distinct: true)
 
    
@@ -32,7 +33,7 @@ class DaysController < ApplicationController
 
   def new
 
-    @day = Day.new
+    @day = current_user.days.new
 
   end
 
@@ -41,7 +42,8 @@ class DaysController < ApplicationController
 
   def create
 
-    @day = Day.new(day_params)
+    @day = current_user.days.new(day_params)
+
 
     respond_to do |format|
       if @day.save
@@ -85,13 +87,13 @@ class DaysController < ApplicationController
 
     def set_day
 
-      @day = Day.find(params[:id])
+      @day = current_user.days.find(params[:id])
 
     end
 
     def day_params
 
-      params.require(:day).permit(:mooddate, :moodrating, :moodjournal, :moodword, :isbookmarked)
+      params.require(:day).permit(:current_user, :mooddate, :moodrating, :moodjournal, :moodword, :isbookmarked)
       
     end
 end
