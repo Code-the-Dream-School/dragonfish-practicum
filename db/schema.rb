@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_205505) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "isbookmarked"
-    t.integer "user_id"
+    t.integer "user_id", foreign_key: true
     t.index ["user_id"], name: "index_days_on_user_id"
   end
 
