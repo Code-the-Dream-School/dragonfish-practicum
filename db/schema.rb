@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_31_052556) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_09_214257) do
   create_table "days", force: :cascade do |t|
     t.date "mooddate"
     t.integer "moodrating"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_052556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "isbookmarked"
+    t.integer "user_id", null: false
   end
 
   create_table "notes", force: :cascade do |t|
@@ -57,4 +58,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_052556) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "days", "users"
 end
