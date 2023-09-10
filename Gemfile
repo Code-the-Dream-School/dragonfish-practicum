@@ -12,6 +12,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "devise"
 gem "omniauth"
+gem "byebug"
 # gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

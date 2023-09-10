@@ -1,7 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <div class= "daydetails2">
-  <%= render @day %>
+  <% if current_user %>
+    <%= render current_user.days %>
+  <% end %>
 </div>
 
 <div class= "leftshift1">
