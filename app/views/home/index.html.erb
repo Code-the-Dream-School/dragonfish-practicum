@@ -1,14 +1,32 @@
-<div class="d-flex align-items-center justify-content-center">
-  <h1>Home#index</h1>
+<section class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h1 class="display-4">MoodTracker</h1>
+    <%= image_tag ("bamboo.jpg"), width: 200, height: 150, :class => "img-thumbnail flex-shrink-0" %>
+    <p class="lead mt-3">A small mood tracking app built with Ruby on Rails.</p>
+    <hr class="my-4">
+  </div>
+</section>
 
-  <div class="col">
-		<h4>Sign Up Today</h4>
-			<%= link_to 'Sign Up', new_user_registration_path, class: "mt-2 btn btn-primary" %>
-		<hr>
-		<h5 class="mt-2">Already have an account?</h5>
-			<%= link_to 'Sign In', new_user_session_path, class: "mt-2 btn btn-primary" %>
+<section class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-9">
+				<div class="card card-body mb-5">
+					<h3 class="card-title">Embrace emotional wellness with MoodTracker - your self-paced journey to mindfulness and balance</h3>
+          <h6 class="card-subtitle mt-2 mb-2 text-muted">Sign up TODAY</h6>
+					<p class="card-text">Introducing MoodTracker, your personalized self-paced mood tracker designed to bring mindfulness and emotional well-being to your daily life. With MoodTracker, you have the freedom to chart your emotional journey on your terms. Simply record your current mood by selecting from a range of emoticons and add optional notes to provide context for your feelings. Over time, MoodTracker's insightful graphs and visualizations will help you identify patterns and triggers, empowering you to make informed decisions to improve your emotional well-being.</p>
+					<p>Whether you're looking to enhance self-awareness, manage stress, or simply keep a record of your emotional journey, MoodTracker is here to support you every step of the way. Take control of your emotions, build resilience, and live a more balanced life with MoodTracker today.</p>
+				</div>
+			</div>
+			<div class="col">
+				<h4>Sign Up Today</h4>
+				<%= link_to 'Sign Up', new_user_registration_path, class: "mt-2 btn btn-primary" %>
+				<hr>
+				<h5 class="mt-2">Already have an account?</h5>
+				<%= link_to 'Sign In', new_user_session_path, class: "mt-2 btn btn-primary" %>
+			</div>
 		</div>
-
-</div>
+	</div>
+</section>
 
 

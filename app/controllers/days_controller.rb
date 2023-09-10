@@ -16,7 +16,7 @@ class DaysController < ApplicationController
     @ends = Date.strptime(end_split, "%m/%d/%Y")
     else
     end
-
+    
     @moodrating = Day.group(:moodrating)
 
     @q = current_user.days.ransack(params[:q])
@@ -27,13 +27,16 @@ class DaysController < ApplicationController
   end
 
   def new
+
     @day = current_user.days.new
+
   end
 
   def edit
   end
 
   def create
+
     @day = current_user.days.new(day_params)
     respond_to do |format|
       if @day.save
