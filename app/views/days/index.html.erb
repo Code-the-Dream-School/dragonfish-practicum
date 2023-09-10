@@ -39,7 +39,9 @@
     </div>
 
       <div id="linechart">
-        <%= render 'days/linechart'%>    
+        <% if current_user %> 
+          <%= render 'days/linechart' %>
+        <% end %>
       </div>
 
         <div id="linechartcustom" class="hidden">
