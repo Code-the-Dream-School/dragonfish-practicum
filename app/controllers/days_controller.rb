@@ -19,7 +19,7 @@ class DaysController < ApplicationController
 
     @moodrating = Day.group(:moodrating)
 
-    @q = Day.ransack(params[:q])
+    @q = current_user.days.ransack(params[:q])
     @moodresults = @q.result(distinct: true)
 
    
