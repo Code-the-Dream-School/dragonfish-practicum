@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema[7.0].define(version: 2023_09_09_214504) do
-
   create_table "days", force: :cascade do |t|
     t.date "mooddate"
     t.integer "moodrating"
@@ -21,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_214504) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "isbookmarked"
-    t.integer "user_id", foreign_key: true
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_days_on_user_id"
   end
 
