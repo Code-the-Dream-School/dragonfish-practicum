@@ -39,7 +39,7 @@ class DaysController < ApplicationController
     @day = current_user.days.new(day_params)
     respond_to do |format|
       if @day.save
-        format.html { redirect_to days_url, notice: "You've added a day" }
+        format.html { redirect_to day_url(@day), notice: "You've added a day" }
         format.json { render :show, status: :created, location: @day }
       else
         format.html { render :new, status: :unprocessable_entity }
