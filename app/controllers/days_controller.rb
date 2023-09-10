@@ -21,18 +21,12 @@ class DaysController < ApplicationController
 
     @q = current_user.days.ransack(params[:q])
     @moodresults = @q.result(distinct: true)
-
-   
-
   end
-
-  
 
   def show
   end
 
   def new
-
     @day = current_user.days.new
 
   end
@@ -43,11 +37,9 @@ class DaysController < ApplicationController
   def create
 
     @day = current_user.days.new(day_params)
-
-
     respond_to do |format|
       if @day.save
-        format.html { redirect_to day_url(@day), notice: "Day created" }
+        format.html { redirect_to days_url, notice: "Day created" }
         format.json { render :show, status: :created, location: @day }
       else
         format.html { render :new, status: :unprocessable_entity }
