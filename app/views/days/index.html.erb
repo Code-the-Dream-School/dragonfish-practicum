@@ -1,78 +1,80 @@
-<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.js"></script>
+<% if current_user %>
+  <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.js"></script>
 
-<head>
-<%= javascript_importmap_tags %>
-</head>
+  <head>
+  <%= javascript_importmap_tags %>
+  </head>
 
-<p style="color: green"><%= notice %></p>
+  <p style="color: green"><%= notice %></p>
 
-<pre class="d" id="t1">
-    __  ___                ________                __            
-   /  |/  /___  ____  ____/ /_  __/________ ______/ /_____  _____
-  / /|_/ / __ \/ __ \/ __  / / / / ___/ __ `/ ___/ //_/ _ \/ ___/
- / /  / / /_/ / /_/ / /_/ / / / / / /  / /_/ / /__/ ,< /  __/     
-/_/  /_/\____/\____/\__,_/ /_/ /_/   \__,_/\___/_/|_|\___/_/     
-                                                                 
-</pre>
+  <pre class="d" id="t1">
+      __  ___                ________                __            
+    /  |/  /___  ____  ____/ /_  __/________ ______/ /_____  _____
+    / /|_/ / __ \/ __ \/ __  / / / / ___/ __ `/ ___/ //_/ _ \/ ___/
+  / /  / / /_/ / /_/ / /_/ / / / / / /  / /_/ / /__/  /  __/     
+  /_/  /_/\____/\____/\__,_/ /_/ /_/   \__,_/\___/_/|_|\___/_/     
+                                                                  
+  </pre>
 
-<body id="body">
+  <body id="body">
 
-  <button type='button' class= "backbutton" onclick="location.href='<%= new_day_path() %>';">Create new daily entry</button> 
+    <button type='button' class= "backbutton" onclick="location.href='<%= new_day_path() %>';">Create new daily entry</button> 
 
-  <div id="piechartbutton" class="leftshift1" style="margin-bottom: 1%;"><button onclick="switchpiechart()">See pie chart</button></div>
-  <div id="linechartbutton" class="hidden leftshift1" style="margin-bottom: 1%;"><button onclick="switchlinechart()">See line chart</button></div>
-  <div id="columnchartbutton" class="hidden leftshift1" style="margin-bottom: 1%;"><button onclick="switchcolumnchart()">See column chart</button></div>
+    <div id="piechartbutton" class="leftshift1" style="margin-bottom: 1%;"><button onclick="switchpiechart()">See pie chart</button></div>
+    <div id="linechartbutton" class="hidden leftshift1" style="margin-bottom: 1%;"><button onclick="switchlinechart()">See line chart</button></div>
+    <div id="columnchartbutton" class="hidden leftshift1" style="margin-bottom: 1%;"><button onclick="switchcolumnchart()">See column chart</button></div>
 
-  <div id="linechartbuttons">
-    <div style="display: flex; margin-left: 2%;" >
-      <div class="leftshift1"><button id="linechartbuttonA" class="buttonselect" onclick="switchlinechartall()">All</button></div>
-      <div class="leftshift1"><button id="linechartbuttonC" onclick="switchcustom()">Custom range</button></div>
-      <div class="leftshift1 hidden" id="calendersearchbutton">
-        <%= form_with url: days_path, method: :get do |form| %>
-          <%= form.text_field :days_between, value: params[:days_between], class: "d", data: {controller: "daterangepicker"} %>
-          <%= form.submit "search", class: "d" %>
-        <% end %>
+    <div id="linechartbuttons">
+      <div style="display: flex; margin-left: 2%;" >
+        <div class="leftshift1"><button id="linechartbuttonA" class="buttonselect" onclick="switchlinechartall()">All</button></div>
+        <div class="leftshift1"><button id="linechartbuttonC" onclick="switchcustom()">Custom range</button></div>
+        <div class="leftshift1 hidden" id="calendersearchbutton">
+          <%= form_with url: days_path, method: :get do |form| %>
+            <%= form.text_field :days_between, value: params[:days_between], class: "d", data: {controller: "daterangepicker"} %>
+            <%= form.submit "search", class: "d" %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
-    <div id="linechart">
-      <%= render 'days/linechart'%>    
-    </div>
-
-      <div id="linechartcustom" class="hidden">
-        <%= render 'days/linechartcustom'%>    
+      <div id="linechart">
+        <%= render 'days/linechart'%>    
       </div>
 
-    <div id="piechart" class="hidden">
-        <%= render 'days/piechart'%>    
+        <div id="linechartcustom" class="hidden">
+          <%= render 'days/linechartcustom'%>    
+        </div>
+
+      <div id="piechart" class="hidden">
+          <%= render 'days/piechart'%>    
+      </div>
+
+      <div id="columnchart" class="hidden">
+          <%= render 'days/columnchart'%>    
+      </div>
+
+
+
+    <div style="display: flex;">
+      <div class="leftshift1"><button id="allinfobutton" class="buttonselect" onclick="switchall()">All</button></div>
+      <div class="leftshift1"><button id="ratingsbutton" onclick="switchmoodrating()">Ratings</button></div>
+      <div class="leftshift1"><button id="moodwordsbutton" onclick="switchmoodword()">Mood-Words</button></div>
+      <div class="leftshift1"><button id="descriptionsbutton" onclick="switchmoodjournal()">Descriptions</button></div>  
     </div>
 
-    <div id="columnchart" class="hidden">
-        <%= render 'days/columnchart'%>    
-    </div>
+    <div class="leftshift1" id="searchall"><%= render 'search/formall'%></div>
 
+    <div  class="leftshift1 hidden" id="searchmoodrating"><%= render 'search/formmoodrating'%></div>
 
+    <div  class="leftshift1 hidden" id="searchmoodword"><%= render 'search/formmoodword'%></div>
 
-  <div style="display: flex;">
-    <div class="leftshift1"><button id="allinfobutton" class="buttonselect" onclick="switchall()">All</button></div>
-    <div class="leftshift1"><button id="ratingsbutton" onclick="switchmoodrating()">Ratings</button></div>
-    <div class="leftshift1"><button id="moodwordsbutton" onclick="switchmoodword()">Mood-Words</button></div>
-    <div class="leftshift1"><button id="descriptionsbutton" onclick="switchmoodjournal()">Descriptions</button></div>  
-  </div>
+    <div  class="leftshift1 hidden" id="searchmoodjournal"><%= render 'search/formmoodjournal'%></div>
 
-  <div class="leftshift1" id="searchall"><%= render 'search/formall'%></div>
+      <p class="d" id="footer"></p>
+    
+    </body>
 
-  <div  class="leftshift1 hidden" id="searchmoodrating"><%= render 'search/formmoodrating'%></div>
-
-  <div  class="leftshift1 hidden" id="searchmoodword"><%= render 'search/formmoodword'%></div>
-
-  <div  class="leftshift1 hidden" id="searchmoodjournal"><%= render 'search/formmoodjournal'%></div>
-
-    <p class="d" id="footer"></p>
-  
-  </body>
-
-<script>
-</script>
+  <script>
+  </script>
+<% end %>
