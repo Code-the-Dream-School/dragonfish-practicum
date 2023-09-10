@@ -28,14 +28,12 @@ class DaysController < ApplicationController
 
   def new
     @day = current_user.days.new
-
   end
 
   def edit
   end
 
   def create
-
     @day = current_user.days.new(day_params)
     respond_to do |format|
       if @day.save
@@ -46,11 +44,9 @@ class DaysController < ApplicationController
         format.json { render json: @day.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def update
-
     respond_to do |format|
       if @day.update(day_params)
         format.html { redirect_to days_path, notice: "Day updated" }
@@ -60,32 +56,24 @@ class DaysController < ApplicationController
         format.json { render json: @day.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def destroy
-
     @day.destroy
-
     respond_to do |format|
       format.html { redirect_to days_url, notice: "Day deleted" }
       format.json { head :no_content }
     end
-
   end
 
   
   private
 
     def set_day
-
       @day = current_user.days.find(params[:id])
-
     end
 
     def day_params
-
-      params.require(:day).permit(:current_user, :mooddate, :moodrating, :moodjournal, :moodword, :isbookmarked)
-      
+      params.require(:day).permit(:mooddate, :moodrating, :moodjournal, :moodword, :isbookmarked)
     end
 end
