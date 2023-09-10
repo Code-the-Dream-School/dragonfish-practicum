@@ -2,7 +2,7 @@ class Day < ApplicationRecord
     belongs_to :user
     has_many :notes
     
-    validates :mooddate, uniqueness: true, presence: { message: '- You must select a date.' }
+    validates :mooddate, uniqueness: { scope: :user_id }, presence: { message: '- You must select a date.' }
     validates :moodjournal, presence: { message: '- Please add some notes for your future self.' }
     validates :moodword, presence: { message: '- Please add a single word describing your day.' }
     validates :moodrating, 
