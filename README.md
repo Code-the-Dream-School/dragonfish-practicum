@@ -36,7 +36,7 @@ Natalie Petrolino
 
 Greg Curl
 [@gacurl](https://github.com/gacurl)
-[ Twitter @GregCurl2](https://twitter.com/GregCurl2)
+[@GregCurl2](https://twitter.com/GregCurl2)
 
 ## Version History
 * 0.1
