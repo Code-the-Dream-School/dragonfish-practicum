@@ -166,6 +166,7 @@ GEM
       rack (>= 2.2.3)
       rack-protection
     orm_adapter (0.5.0)
+    pg (1.5.4)
     popper_js (2.11.7)
     public_suffix (5.0.3)
     puma (5.6.6)
@@ -257,8 +258,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.3-x86_64-darwin)
-    sqlite3 (1.6.3-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     thor (1.2.2)
@@ -308,6 +307,7 @@ DEPENDENCIES
   jbuilder
   letter_opener
   omniauth
+  pg
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
   rails-controller-testing
@@ -316,7 +316,6 @@ DEPENDENCIES
   rspec-rails
   selenium-webdriver
   sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data
