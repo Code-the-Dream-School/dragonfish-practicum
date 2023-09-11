@@ -1,4 +1,4 @@
-## MoodTracket v1.0
+## MoodTracker
 
 Introducing MoodTracker, your personalized self-paced mood tracker designed to bring mindfulness and emotional well-being to your daily life. With MoodTracker, you have the freedom to chart your emotional journey on your terms. Simply record your current mood by selecting from a range of emoticons and add optional notes to provide context for your feelings. Over time, MoodTracker's insightful graphs and visualizations will help you identify patterns and triggers, empowering you to make informed decisions to improve your emotional well-being. Whether you're looking to enhance self-awareness, manage stress, or simply keep a record of your emotional journey, MoodTracker is here to support you every step of the way. Take control of your emotions, build resilience, and live a more balanced life with MoodTracker today.
 
@@ -36,7 +36,7 @@ Natalie Petrolino
 
 Greg Curl
 [@gacurl](https://github.com/gacurl)
-[@vsspnkkvr](https://twitter.com/GregCurl2)
+[ Twitter @GregCurl2](https://twitter.com/GregCurl2)
 
 ## Version History
 * 0.1
