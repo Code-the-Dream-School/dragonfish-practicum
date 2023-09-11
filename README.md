@@ -35,7 +35,7 @@ Natalie Petrolino
 [@vsspnkkvr](https://github.com/vsspnkkvr)
 
 Greg Curl
-[@gacurl](https://github.com/gacurl))
+[@gacurl](https://github.com/gacurl)
 [@vsspnkkvr](https://twitter.com/GregCurl2)
 
 ## Version History
