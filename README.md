@@ -39,12 +39,14 @@ Greg Curl
 [@GregCurl2](https://twitter.com/GregCurl2)
 
 ## Version History
-* 0.1
-    * Initial Release
+* 1.0
+    * Project completed intitial development and is now fully functional 
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under an Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+
+For more detials, see: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
 ## Acknowledgments
 
