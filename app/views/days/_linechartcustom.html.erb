@@ -1,1 +1,1 @@
-<%= line_chart Day.group_by_day(:mooddate, default_value: "missing", range: @starts..@ends, expand_range: true).sum(:moodrating), library: {spanGaps: true}, min: 0, max: 10 %>
+<%= line_chart current_user.days.group_by_day(:mooddate, default_value: "missing", range: @starts..@ends, expand_range: true).sum(:moodrating), library: {spanGaps: true}, min: 0, max: 10 %>
